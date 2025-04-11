@@ -1,6 +1,5 @@
+/root/aplic/springboot-kafka-consumer-template/src/test/java/com/integration/kafka2crm/cucumber/steps/RestAssuredSteps.java
 /root/aplic/springboot-kafka-consumer-template/src/test/java/com/integration/kafka2crm/cucumber/steps/KafkaCrmIntegrationSteps.java
 /root/aplic/springboot-kafka-consumer-template/src/test/java/com/integration/kafka2crm/SpringContextTest.java
-/root/aplic/springboot-kafka-consumer-template/src/test/java/com/integration/kafka2crm/cucumber/steps/KafkaSteps.java
-/root/aplic/springboot-kafka-consumer-template/src/test/java/com/integration/kafka2crm/cucumber/steps/WireMockSteps.java
 /root/aplic/springboot-kafka-consumer-template/src/test/java/com/integration/kafka2crm/cucumber/config/CucumberTestConfig.java
 /root/aplic/springboot-kafka-consumer-template/src/test/java/com/integration/kafka2crm/cucumber/CucumberTestRunner.java
