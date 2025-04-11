@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Modelo que representa o endereço no formato do CRM.
+ * Model representing an address in CRM format.
  */
 @Data
 @Builder
@@ -33,6 +33,7 @@ public class EnderecoCRM {
     @JsonProperty("state")
     private String state;
     
-    @JsonProperty("zip_code")
-    private String zipCode;
+    @JsonProperty("postal_code")
+    private String postalCode;
+    
 } 

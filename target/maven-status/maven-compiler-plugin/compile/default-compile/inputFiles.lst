@@ -1,0 +1,11 @@
+/root/aplic/springboot-kafka-consumer-template/src/main/java/com/integration/kafka2crm/model/Endereco.java
+/root/aplic/springboot-kafka-consumer-template/src/main/java/com/integration/kafka2crm/model/ClienteCRM.java
+/root/aplic/springboot-kafka-consumer-template/src/main/java/com/integration/kafka2crm/model/EnderecoCRM.java
+/root/aplic/springboot-kafka-consumer-template/src/main/java/com/integration/kafka2crm/consumer/ClienteKafkaConsumer.java
+/root/aplic/springboot-kafka-consumer-template/src/main/java/com/integration/kafka2crm/config/AppConfig.java
+/root/aplic/springboot-kafka-consumer-template/src/main/java/com/integration/kafka2crm/model/Produto.java
+/root/aplic/springboot-kafka-consumer-template/src/main/java/com/integration/kafka2crm/model/Cliente.java
+/root/aplic/springboot-kafka-consumer-template/src/main/java/com/integration/kafka2crm/Kafka2CrmApplication.java
+/root/aplic/springboot-kafka-consumer-template/src/main/java/com/integration/kafka2crm/model/ProdutoCRM.java
+/root/aplic/springboot-kafka-consumer-template/src/main/java/com/integration/kafka2crm/service/ClienteMappingService.java
+/root/aplic/springboot-kafka-consumer-template/src/main/java/com/integration/kafka2crm/service/CrmApiService.java

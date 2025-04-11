@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 
 /**
- * Modelo que representa um produto no formato do CRM.
+ * Model representing a product in CRM format.
  */
 @Data
 @Builder
@@ -29,6 +29,7 @@ public class ProdutoCRM {
     @JsonProperty("price")
     private BigDecimal price;
     
-    @JsonProperty("category")
-    private String category;
+    @JsonProperty("quantity")
+    private Integer quantity;
+    
 } 

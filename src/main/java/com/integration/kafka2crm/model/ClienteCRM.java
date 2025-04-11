@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 /**
- * Modelo que representa o cliente no formato do CRM.
+ * Model that represents the client in CRM format.
  */
 @Data
 @Builder
@@ -48,4 +48,8 @@ public class ClienteCRM {
     
     @JsonProperty("updated_at")
     private LocalDate updatedAt;
+    
+    // This is an example of a mapped field mentioned in the requirements
+    @JsonProperty("nome_crm")
+    private String nomeCrm;
 } 

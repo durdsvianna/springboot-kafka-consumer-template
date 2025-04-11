@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * Modelo que representa o endereço de um cliente.
+ * Model representing an address.
  */
 @Data
 @Builder
@@ -15,16 +15,11 @@ import lombok.NoArgsConstructor;
 public class Endereco {
     
     private String logradouro;
-    
     private String numero;
-    
     private String complemento;
-    
     private String bairro;
-    
     private String cidade;
-    
     private String estado;
-    
     private String cep;
+    
 } 

@@ -1,0 +1,6 @@
+com/integration/kafka2crm/cucumber/config/CucumberTestConfig.class
+com/integration/kafka2crm/cucumber/steps/KafkaSteps.class
+com/integration/kafka2crm/cucumber/steps/KafkaCrmIntegrationSteps.class
+com/integration/kafka2crm/SpringContextTest.class
+com/integration/kafka2crm/cucumber/CucumberTestRunner.class
+com/integration/kafka2crm/cucumber/steps/WireMockSteps.class

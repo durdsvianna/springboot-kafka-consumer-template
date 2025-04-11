@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 /**
- * Modelo que representa um cliente recebido do Kafka.
+ * Model that represents a client received from Kafka.
  */
 @Data
 @Builder

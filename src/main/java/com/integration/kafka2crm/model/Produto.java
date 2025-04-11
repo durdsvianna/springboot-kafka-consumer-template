@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 
 /**
- * Modelo que representa um produto associado a um cliente.
+ * Model representing a product.
  */
 @Data
 @Builder
@@ -17,12 +17,9 @@ import java.math.BigDecimal;
 public class Produto {
     
     private String codigo;
-    
     private String nome;
-    
     private String descricao;
+    private BigDecimal preco;
+    private Integer quantidade;
     
-    private BigDecimal valor;
-    
-    private String categoria;
 } 
