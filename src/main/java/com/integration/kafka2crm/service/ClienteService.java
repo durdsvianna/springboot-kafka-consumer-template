@@ -1,71 +1,51 @@
 package com.integration.kafka2crm.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.integration.kafka2crm.client.CRMClient;
+import com.integration.kafka2crm.client.CrmApiClient;
+import com.integration.kafka2crm.mapper.ClienteMapper;
 import com.integration.kafka2crm.model.Cliente;
 import com.integration.kafka2crm.model.ClienteCRM;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 /**
- * Serviço para processamento de clientes e envio para o CRM.
+ * Serviço para processamento de clientes e integração com o CRM
  */
-@Slf4j
 @Service
+@Slf4j
+@RequiredArgsConstructor
 public class ClienteService {
 
-    private final ObjectMapper objectMapper;
     private final ClienteMapper clienteMapper;
-    private final CRMClient crmClient;
+    private final CrmApiClient crmApiClient;
 
     /**
-     * Construtor para o serviço de clientes.
+     * Processa um cliente e envia para o CRM
      *
-     * @param objectMapper Mapper para conversão JSON
-     * @param clienteMapper Mapper para conversão de Cliente para ClienteCRM
-     * @param crmClient Cliente para comunicação com o CRM
+     * @param cliente Cliente a ser processado
+     * @return true se o processamento for bem-sucedido, false caso contrário
      */
-    public ClienteService(ObjectMapper objectMapper, ClienteMapper clienteMapper, CRMClient crmClient) {
-        this.objectMapper = objectMapper;
-        this.clienteMapper = clienteMapper;
-        this.crmClient = crmClient;
-    }
-
-    /**
-     * Processa uma mensagem do Kafka contendo dados de cliente e envia para o CRM.
-     *
-     * @param mensagem Mensagem JSON recebida do Kafka
-     * @return true se o processamento foi bem-sucedido, false caso contrário
-     */
-    public boolean processarMensagem(String mensagem) {
+    public boolean processarCliente(Cliente cliente) {
         try {
-            log.info("Processando mensagem do Kafka: {}", mensagem);
+            log.info("Processando cliente ID: {}", cliente.getId());
             
-            // Desserializa a mensagem para um objeto Cliente
-            Cliente cliente = objectMapper.readValue(mensagem, Cliente.class);
-            log.info("Cliente desserializado com sucesso: {}", cliente.getId());
-            
-            // Mapeia o cliente para o formato do CRM
-            ClienteCRM clienteCRM = clienteMapper.mapToCRM(cliente);
-            log.info("Cliente mapeado para formato CRM: {}", clienteCRM.getExternalId());
-            
-            // Envia o cliente para o CRM
-            boolean resultado = crmClient.enviarCliente(clienteCRM);
-            
-            if (resultado) {
-                log.info("Cliente {} processado e enviado com sucesso", cliente.getId());
-            } else {
-                log.error("Falha ao enviar cliente {} para o CRM", cliente.getId());
+            // Validação básica
+            if (cliente.getId() == null || cliente.getNome() == null) {
+                log.error("Cliente com dados incompletos: {}", cliente);
+                return false;
             }
             
-            return resultado;
+            // Mapeia para o formato do CRM
+            ClienteCRM clienteCRM = clienteMapper.toClienteCRM(cliente);
+            log.debug("Cliente mapeado para formato CRM: {}", clienteCRM);
             
-        } catch (JsonProcessingException e) {
-            log.error("Erro ao deserializar mensagem do Kafka: {}", e.getMessage(), e);
-            return false;
+            // Envia para o CRM
+            crmApiClient.sendClientToCrm(clienteCRM);
+            log.info("Cliente ID: {} enviado com sucesso para o CRM", cliente.getId());
+            
+            return true;
         } catch (Exception e) {
-            log.error("Erro inesperado ao processar mensagem: {}", e.getMessage(), e);
+            log.error("Erro ao processar cliente ID: {}", cliente.getId(), e);
             return false;
         }
     }
