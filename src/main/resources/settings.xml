@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 
+          http://maven.apache.org/xsd/settings-1.0.0.xsd">
+    
+    <!-- ====================================================== -->
+    <!-- CONFIGURAÇÕES DE PROXY -->
+    <!-- ====================================================== -->
+    <proxies>
+        <!-- Proxy HTTP - Configuração principal -->
+        <proxy>
+            <id>corporate-http-proxy</id>
+            <active>true</active>
+            <protocol>http</protocol>
+            <host>10.255.255.2</host>
+            <port>8080</port>
+            <!-- Remova as tags username e password se não precisar de autenticação -->
+            <username>seu_usuario</username>
+            <password>sua_senha</password>
+            <nonProxyHosts>localhost|127.0.0.1|*.local|*.interno</nonProxyHosts>
+        </proxy>
+
+        <!-- Proxy HTTPS - Para conexões seguras -->
+        <proxy>
+            <id>corporate-https-proxy</id>
+            <active>true</active>
+            <protocol>https</protocol>
+            <host>10.255.255.2</host>
+            <port>8080</port>
+            <!-- Remova as tags username e password se não precisar de autenticação -->
+            <username>seu_usuario</username>
+            <password>sua_senha</password>
+            <nonProxyHosts>localhost|127.0.0.1|*.local|*.interno</nonProxyHosts>
+        </proxy>
+    </proxies>
+
+    <!-- ====================================================== -->
+    <!-- CONFIGURAÇÕES ADICIONAIS ÚTEIS -->
+    <!-- ====================================================== -->
+    <mirrors>
+        <!-- Espelho para repositório central - pode melhorar performance -->
+        <mirror>
+            <id>central-mirror</id>
+            <name>Central Repository Mirror</name>
+            <url>https://repo.maven.apache.org/maven2</url>
+            <mirrorOf>central</mirrorOf>
+        </mirror>
+    </mirrors>
+
+    <profiles>
+        <!-- Perfil padrão -->
+        <profile>
+            <id>default-profile</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <repositories>
+                <repository>
+                    <id>central</id>
+                    <url>https://repo.maven.apache.org/maven2</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
+
+    <activeProfiles>
+        <activeProfile>default-profile</activeProfile>
+    </activeProfiles>
+
+</settings>
